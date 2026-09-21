@@ -3,110 +3,258 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="王二的个人作品集，展示项目管理、商业分析与流程优化实践。">
-  <title>王二 | 动态作品集</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta name="description" content="冷思成的设计作品集，聚焦艺术科技、品牌视觉与文化创意。">
+  <title>冷思成 — 艺术科技与视觉设计</title>
+  <link rel="stylesheet" href="css/styles.css?v=14">
 </head>
 <body>
   <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="ambient-background" aria-hidden="true">
+    <span class="ambient-line ambient-line-one"></span>
+    <span class="ambient-line ambient-line-two"></span>
+    <span class="ambient-line ambient-line-three"></span>
+  </div>
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
   <div class="page-shell">
-    <nav class="site-nav container" aria-label="主导航">
-      <a class="brand" href="#top">W / 02</a>
-      <div class="nav-links" id="nav-links">
-        <a href="#work">作品</a>
-        <a href="#about">关于</a>
-        <a href="#journey">经历</a>
-        <a href="#contact">联系</a>
-      </div>
-      <div class="nav-actions">
-        <button class="icon-button" id="theme-toggle" type="button" aria-label="切换深色模式" title="切换深色模式">◐</button>
-        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false">菜单</button>
-      </div>
-    </nav>
+    <header class="site-header">
+      <nav class="site-nav container" aria-label="主导航">
+        <a class="brand" href="#top" aria-label="回到首页">
+          <span class="brand-core">冷思成 / WORKS</span>
+          <span class="brand-mark">—</span>
+        </a>
 
-    <header class="hero container" id="top">
-      <div class="hero-copy reveal">
-        <p class="eyebrow"><span class="status-dot"></span> 可承接新项目 · 2024 — 现在</p>
-        <h1>把复杂的事，<em>做成清晰的作品。</em></h1>
-        <p class="hero-intro">我是王二，一名关注商业、流程与体验的项目经理。用数据理解问题，用协作推动改变。</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#work">查看作品 <span>↘</span></a>
-          <a class="text-link" href="mailto:wanger@example.com">wanger@example.com ↗</a>
+        <div class="nav-links" id="nav-links">
+          <a href="#projects" class="nav-item">
+            <span>作品</span>
+            <span class="nav-icon">↗</span>
+          </a>
+          <a href="#experience" class="nav-item">
+            <span>经历</span>
+            <span class="nav-icon">↗</span>
+          </a>
+          <a href="#education" class="nav-item">
+            <span>关于我</span>
+            <span class="nav-icon">↗</span>
+          </a>
+          <a href="#skills" class="nav-item">
+            <span>技能</span>
+            <span class="nav-icon">↗</span>
+          </a>
+          <a href="#contact" class="nav-item">
+            <span>联系</span>
+            <span class="nav-icon">↗</span>
+          </a>
         </div>
-      </div>
-      <div class="hero-visual reveal" aria-label="个人信息摘要">
-        <div class="orbit orbit-large"></div>
-        <div class="orbit orbit-small"></div>
-        <div class="portrait-card">
-          <span class="portrait-label">PORTFOLIO<br>2024—25</span>
-          <span class="portrait-mark">王<br>二</span>
-          <span class="portrait-foot">STRATEGY / OPERATIONS</span>
+
+        <div class="nav-actions">
+          <button class="language-toggle" id="language-toggle" type="button" aria-label="切换到英语">
+            <span data-language-option="zh">中</span><span data-language-option="en">EN</span><i aria-hidden="true"></i>
+          </button>
+          <button class="pill-button" id="schedule-call" type="button" data-open-panel>联系我</button>
+          <button class="menu-toggle" id="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false">Menu</button>
         </div>
-        <div class="hero-note">01<br><span>SELECTED<br>WORK</span></div>
-      </div>
+      </nav>
     </header>
 
+    <aside class="side-panel" id="side-panel" aria-label="快速联系面板">
+      <div class="panel-top">
+        <span class="panel-kicker">CONTACT / 冷思成</span>
+        <button class="panel-close" id="panel-close" type="button" aria-label="关闭面板">×</button>
+      </div>
+
+      <form class="panel-form">
+        <label>
+          <span data-i18n="formName">姓名</span>
+          <input type="text" placeholder="你的姓名" aria-label="姓名" data-placeholder-zh="你的姓名" data-placeholder-en="Your name">
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" placeholder="your@email.com" aria-label="邮箱" data-placeholder-zh="邮箱" data-placeholder-en="Email">
+        </label>
+        <label>
+          <span data-i18n="formMessage">留言</span>
+          <textarea rows="4" placeholder="告诉我你想聊的项目或机会..." data-placeholder-zh="告诉我你想聊的项目或机会..." data-placeholder-en="Tell me about the project or opportunity..."></textarea>
+        </label>
+        <button type="submit" class="primary-button wide" data-i18n="sendMessage">发送留言</button>
+      </form>
+    </aside>
+
+    <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+
+    <aside class="work-modal" id="work-modal" aria-hidden="true" aria-labelledby="work-modal-title">
+      <div class="modal-top"><span class="panel-kicker">SELECTED WORK / CASE STUDY</span><button class="panel-close" id="work-modal-close" type="button" aria-label="关闭作品详情">×</button></div>
+      <div class="modal-art" id="work-modal-art"><span id="work-modal-code">01 / RESEARCH</span><strong id="work-modal-art-title">项目视觉</strong></div>
+      <p class="eyebrow" id="work-modal-meta">RESEARCH · 2024</p>
+      <h2 id="work-modal-title">作品标题</h2>
+      <p id="work-modal-description">作品详情</p>
+      <div class="modal-tags" id="work-modal-tags"></div>
+    </aside>
+
     <main>
-      <section class="work-section container" id="work">
-        <div class="section-heading reveal">
+      <section class="hero-slide slide" id="top">
+        <div class="container hero-layout">
+          <div class="hero-copy reveal-up">
+            <p class="eyebrow"><span class="status-dot"></span> ART TECHNOLOGY / VISUAL DESIGN / RESEARCH</p>
+
+            <h1 class="split-heading title-hover" aria-label="冷思成，设计连接文化与商业。">
+              <span class="line"><span>冷思成，</span></span>
+              <span class="line"><span>设计连接</span></span>
+              <span class="line"><span>文化与商业。</span></span>
+            </h1>
+
+            <p class="hero-intro">
+              艺术科技与商业理学硕士在读。用视觉设计、文化研究和数据叙事，把复杂问题转化为清晰、可感知的体验。
+            </p>
+
+            <div class="hero-actions">
+              <button class="primary-button" type="button" data-open-panel>联系我</button>
+              <a class="secondary-link" href="#projects">查看作品 →</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div>
+                <strong data-count="4" data-suffix="+">0</strong>
+                <span>年设计实践</span>
+              </div>
+              <div>
+                <strong data-count="3" data-suffix="">0</strong>
+                <span>设计奖项</span>
+              </div>
+              <div>
+                <strong data-count="1" data-suffix="项">0</strong>
+                <span>市场落地项目</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal-up" aria-label="个人信息卡片">
+            <div class="video-shell">
+              <div class="video-head">
+                <div class="signal-group">
+                  <span class="signal-dot"></span>
+                  <span>NOW / 2026</span>
+                </div>
+                <div class="video-controls">
+                  <span class="mini-btn">贵阳 → 香港</span>
+                  <span class="mini-btn">OPEN TO WORK</span>
+                </div>
+              </div>
+
+              <div class="video-frame">
+                <div class="video-content">
+                  <div class="video-badge">CS / 01</div>
+                  <div class="video-poster" aria-label="visual thinking in motion.">
+                    <span class="poster-word" aria-hidden="true"><span class="poster-letter">v</span><span class="poster-letter">i</span><span class="poster-letter">s</span><span class="poster-letter">u</span><span class="poster-letter">a</span><span class="poster-letter">l</span></span>
+                    <span class="poster-word" aria-hidden="true"><span class="poster-letter">t</span><span class="poster-letter">h</span><span class="poster-letter">i</span><span class="poster-letter">n</span><span class="poster-letter">k</span><span class="poster-letter">i</span><span class="poster-letter">n</span><span class="poster-letter">g</span></span>
+                    <span class="poster-word" aria-hidden="true"><span class="poster-letter">i</span><span class="poster-letter">n</span> <span class="poster-letter">m</span><span class="poster-letter">o</span><span class="poster-letter">t</span><span class="poster-letter">i</span><span class="poster-letter">o</span><span class="poster-letter">n</span><span class="poster-letter">.</span></span>
+                  </div>
+                </div>
+                <div class="timeline-bar">
+                  <span class="play-head"></span>
+                </div>
+                <div class="timeline-meta">
+                  <span>DESIGN / RESEARCH</span>
+                  <span>186 8511 9397</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="marquee-section" aria-label="个人标签横幅滚动">
+        <div class="marquee-track">
+          <span>艺术科技</span><span>品牌视觉</span><span>文化创意</span><span>数据叙事</span><span>IP 设计</span>
+          <span>艺术科技</span><span>品牌视觉</span><span>文化创意</span><span>数据叙事</span><span>IP 设计</span>
+        </div>
+      </section>
+
+      <section class="manifesto-section slide" id="manifesto">
+        <div class="container manifesto-layout">
+          <div class="manifesto-label reveal-up"><span class="eyebrow">00 / Point of view</span><span class="manifesto-mark">✳</span></div>
+          <div class="manifesto-copy reveal-up">
+            <h2>我关心视觉如何让一个地方、一段故事或一种复杂的关系，被重新看见。</h2>
+            <p>作品集会持续更新。这里不急着填满，而是为每个项目留下足够的呼吸、尺度和叙事空间。</p>
+          </div>
+        </div>
+        <div class="container focus-strip reveal-up" aria-label="当前关注方向">
+          <span>Currently exploring</span><b>文化记忆</b><b>互动叙事</b><b>视觉系统</b><b>真实材料</b>
+        </div>
+      </section>
+
+      <section class="resume-section slide" id="education">
+        <div class="container">
+          <div class="section-top reveal-up">
+            <p class="eyebrow">01 / Education</p>
+            <h2>学习，让视野保持流动。</h2>
+          </div>
+          <div class="education-list resume-list reveal-up">
+            <article class="resume-row">
+              <div class="row-index">01</div><div><h3>岭南大学 · 艺术科技与商业理学硕士</h3><p>香港</p></div><time>09/2026 — 至今</time>
+            </article>
+            <article class="resume-row">
+              <div class="row-index">02</div><div><h3>武汉理工大学 × 威尔士圣大卫大学 · 平面设计学士</h3><p>湖北武汉 · 2:1 荣誉学位</p></div><time>09/2021 — 06/2025</time>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="resume-section experience-section slide" id="experience">
+        <div class="container">
+          <div class="section-top reveal-up"><p class="eyebrow">02 / Experience</p><h2>在商业现场，练习把复杂说清楚。</h2></div>
+          <div class="timeline reveal-up">
+            <article class="timeline-item"><div class="timeline-date">10/2025 — 04/2026</div><div class="timeline-main"><h3>华创证券（贵阳分部）</h3><p class="role">机构部门 · 实习生</p><ul><li>参与约 2 亿元上市公司债券发行项目，协助尽调材料、财务数据分析与路演内容制作。</li><li>独立完成上证、标普 500、日经指数近 20 年走势对比，将结论可视化为一页路演材料并被团队采用。</li><li>优化 3 场路演视觉材料；2 周内掌握债券定价、信用评级等基础术语并参与讨论。</li></ul></div></article>
+            <article class="timeline-item"><div class="timeline-date">09/2024 — 11/2024</div><div class="timeline-main"><h3>湖北文化产业发展投资有限公司</h3><p class="role">设计实习生 · 湖北武汉</p><ul><li>与市场部门协作，根据用户调研反馈调整设计方案，使视觉表达与商业目标保持一致。</li><li>协助完成 logo、海报、宣传册等视觉物料设计。</li></ul></div></article>
+            <article class="timeline-item"><div class="timeline-date">02/2023 — 05/2023</div><div class="timeline-main"><h3>贵阳云岩礼品文化旅游产业发展有限公司</h3><p class="role">设计师 / 执行策划 · 贵州贵阳</p><ul><li>参与“铜仁黔金丝猴 IP 文创顶层设计规划案”，负责“毛弟”及家族形象、三视图与 VI 标准设计。</li><li>参与政务礼品、旅游纪念品、食品包装、潮流服饰和办公潮玩等衍生品创制。</li><li>基于游客、情侣、亲子等人群完成产品细分设计，其中一款产品最终投入市场销售。</li></ul></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects-section resume-section slide" id="projects">
+        <div class="container">
+          <div class="section-top reveal-up"><p class="eyebrow">01 / Selected works</p><h2>留一些空间给新的作品。</h2><span class="section-note">作品位 · 可替换为你的新项目 ↗</span></div>
+          <div class="project-grid">
+            <button class="project-feature project-slot project-trigger reveal-up" type="button" data-work="slot-01"><span class="project-number">01 / OPEN SLOT</span><h3>待上传作品</h3><p>视觉设计 / 品牌 / 海报</p><div class="project-result">替换为作品图片<br>和项目简介</div><span class="project-arrow">预留入口 ↗</span></button>
+            <button class="project-feature project-slot project-trigger reveal-up" type="button" data-work="slot-02"><span class="project-number">02 / OPEN SLOT</span><h3>待上传作品</h3><p>IP 设计 / 包装 / 文创</p><div class="project-result">替换为作品图片<br>和项目简介</div><span class="project-arrow">预留入口 ↗</span></button>
+            <button class="project-feature project-slot project-trigger reveal-up" type="button" data-work="slot-03"><span class="project-number">03 / OPEN SLOT</span><h3>待上传作品</h3><p>动态设计 / 影像 / 交互</p><div class="project-result">替换为作品图片<br>和项目简介</div><span class="project-arrow">预留入口 ↗</span></button>
+            <button class="project-feature project-slot project-trigger reveal-up" type="button" data-work="slot-04"><span class="project-number">04 / OPEN SLOT</span><h3>待上传作品</h3><p>研究项目 / 数据可视化</p><div class="project-result">替换为作品图片<br>和项目简介</div><span class="project-arrow">预留入口 ↗</span></button>
+            <button class="project-feature project-slot project-trigger reveal-up" type="button" data-work="slot-05"><span class="project-number">05 / OPEN SLOT</span><h3>待上传作品</h3><p>平面设计 / 出版 / 字体</p><div class="project-result">替换为作品图片<br>和项目简介</div><span class="project-arrow">预留入口 ↗</span></button>
+            <button class="project-feature project-slot project-trigger reveal-up" type="button" data-work="slot-06"><span class="project-number">06 / OPEN SLOT</span><h3>待上传作品</h3><p>自由主题 / 实验性作品</p><div class="project-result">替换为作品图片<br>和项目简介</div><span class="project-arrow">预留入口 ↗</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills-section resume-section slide" id="skills">
+        <div class="container about-layout">
+          <div class="about-copy reveal-up"><p class="eyebrow">02 / About & tools</p><h2>工具是语言，判断力才是语法。</h2></div>
+          <div class="about-text reveal-up"><div class="skill-cloud"><span>Illustrator</span><span>Photoshop</span><span>After Effects</span><span>Blender</span><span>C4D</span><span>PPT</span><span>Word</span><span>TouchDesigner</span><span>InDesign</span></div><div class="awards"><p>米兰设计周中国高校设计学科师生优秀作品展 · 湖北赛区三等奖 <b>05/2025</b></p><p>香港当代设计大奖 · 入围奖 <b>06/2024</b></p><p>中国赛区法国联合设计奖 · 银奖 <b>05/2024</b></p></div></div>
+        </div>
+      </section>
+
+      <section class="contact-section slide" id="contact">
+        <div class="container contact-shell reveal-up">
           <div>
-            <p class="eyebrow">Selected work / 精选作品</p>
-            <h2>让我参与过的<br><em>一些改变。</em></h2>
+            <p class="eyebrow">03 / Contact</p>
+            <h2>一起把想法做成<br>看得见的现场。</h2>
           </div>
-          <p class="section-note">从发现问题到落地结果，记录每一次把想法变成行动的过程。</p>
-        </div>
-        <div class="filter-bar reveal" role="toolbar" aria-label="作品筛选">
-          <button class="filter-button is-active" type="button" data-filter="all">全部作品 <span>04</span></button>
-          <button class="filter-button" type="button" data-filter="strategy">策略</button>
-          <button class="filter-button" type="button" data-filter="data">数据</button>
-          <button class="filter-button" type="button" data-filter="operation">运营</button>
-        </div>
-        <div class="project-grid" id="project-grid"></div>
-      </section>
 
-      <section class="about-section container" id="about">
-        <div class="about-statement reveal">
-          <p class="eyebrow">About / 个人简介</p>
-          <h2>好的工作，既要有<br><em>判断，也要有温度。</em></h2>
-        </div>
-        <div class="about-detail reveal">
-          <p>具有工商管理硕士学位，熟悉企业管理、财务分析与市场策略。我的工作通常发生在多个团队的交界处：把目标拆解，把信息对齐，再让一个可执行的方案真正跑起来。</p>
-          <div class="stat-row">
-            <div><strong data-count="8" data-suffix="+">0</strong><span>推动项目</span></div>
-            <div><strong data-count="20" data-suffix="%">0</strong><span>效率提升</span></div>
-            <div><strong data-count="3" data-suffix="">0</strong><span>核心领域</span></div>
+          <div class="contact-actions">
+            <a class="primary-button" href="mailto:18685119397@163.com">发送邮件</a>
+            <button class="secondary-button" type="button" data-open-panel>留言给我</button>
           </div>
-        </div>
-      </section>
-
-      <section class="journey-section container" id="journey">
-        <div class="section-heading reveal">
-          <div><p class="eyebrow">Journey / 经历</p><h2>一路走来，<em>持续迭代。</em></h2></div>
-        </div>
-        <div class="timeline reveal">
-          <article class="timeline-item"><span class="timeline-year">2022 — 现在</span><div><h3>项目经理 · 某科技公司</h3><p>负责跨部门项目推进，制定项目计划并控制进度与预算，通过流程改进将交付效率提升 20%。</p></div></article>
-          <article class="timeline-item"><span class="timeline-year">2020 — 2022</span><div><h3>MBA · 毕业院校</h3><p>主修战略管理、组织行为、财务管理与市场营销，开始系统训练商业分析与团队协作能力。</p></div></article>
-          <article class="timeline-item"><span class="timeline-year">2016 — 2020</span><div><h3>管理学学士 · 毕业院校</h3><p>在校园项目与实习中建立对用户、业务和组织的第一手理解。</p></div></article>
-        </div>
-      </section>
-
-      <section class="contact-section container" id="contact">
-        <div class="contact-card reveal">
-          <p class="eyebrow">Have a project in mind?</p>
-          <h2>一起做点<br><em>有用的事。</em></h2>
-          <a class="button button-light" href="mailto:wanger@example.com">发邮件给我 <span>↗</span></a>
-          <p class="contact-meta">+86 138 0000 0000 · 上海 / 远程</p>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer container"><span>© 2024 王二</span><span>Built with curiosity / 用好奇心构建</span><a href="#top">回到顶部 ↑</a></footer>
+    <footer class="site-footer">
+      <div class="container footer-line">
+        <span>冷思成 / PORTFOLIO 2026</span>
+        <span>贵阳 · 香港</span>
+        <a href="mailto:18685119397@163.com">18685119397@163.com ↗</a>
+      </div>
+    </footer>
   </div>
 
-  <dialog class="project-dialog" id="project-dialog">
-    <button class="dialog-close" id="dialog-close" type="button" aria-label="关闭项目详情">×</button>
-    <div id="dialog-content"></div>
-  </dialog>
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=15"></script>
 </body>
 </html>
